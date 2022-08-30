@@ -1,6 +1,20 @@
+import logging
+from sys import stdout, stderr
 from flask import Flask, request
 
 app = Flask(__name__)
+
+log = logging.getLogger()
+
+stdout_handler = logging.StreamHandler(stdout)
+stdout_handler.setLevel(logging.DEBUG)
+stdout_handler.addFilter(lambda record: record.levelno <= logging.INFO)
+
+stderr_handler = logging.StreamHandler(stderr)
+stderr_handler.setLevel(logging.WARNING)
+
+log.addHandler(stdout_handler)
+log.addHandler(stderr_handler)
 
 
 @app.route('/')
