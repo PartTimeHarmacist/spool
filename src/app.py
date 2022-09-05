@@ -1,6 +1,6 @@
 import logging
 from sys import stdout, stderr
-from flask import Flask, request
+from flask import Flask, request, render_template
 
 app = Flask(__name__)
 
@@ -19,7 +19,7 @@ log.addHandler(stderr_handler)
 
 @app.route('/')
 def hello_world():  # put application's code here
-    return "Welcome to the initial commit - there's nothing here right now..."
+    return render_template('base.html', title="Hello, Spool")
 
 
 @app.route('/oauth')

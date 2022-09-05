@@ -1,0 +1,13 @@
+<!doctype html>
+<html>
+    <head>
+    {% block head %}
+        <title>{{ title|default('Spool') }}</title>
+    {% endblock head %}
+    </head>
+    <body>
+    {% block body %}
+        {{ content }}
+    {% endblock body %}
+    </body>
+</html>
